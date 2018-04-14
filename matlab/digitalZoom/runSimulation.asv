@@ -1,0 +1,30 @@
+function runSimulation
+
+  kf = setupKalman(.0001, 1);
+  
+  [run, measurement] = getNextMeasurement;
+  
+  while( run )
+    myMeas = (measurement+50)*.00002;
+    addedNoise = (rand-.5);
+    %kf = scaleMeasurementNoise(kf,9*myMeas^4);
+    %"Normal" noise covariance
+    kf = scaleMeasurementNoise(kf,.0001);
+    %9*myMeas^4 / myMeas
+    kf = runSIKalman( kf, myMeas, 0 );
+    data.filtered(kf.iteration) = kf.ph_kp1gkp1(1,1);
+    data.unfiltered(kf.iteration) = myMeas;
+    [run, measurement] = getNextMeasurement(run, measurement);    
+  end
+  
+  min(data.unfiltered)
+  
+  hold off;
+  plot( data.filtered, 'r');
+  hold on;
+  plot( data.unfiltered, 'b:');
+  legend( 'estimation', 'measurement' );
+  xlabel( 'frame' );
+  ylabel( 'position' );
+  
+end
