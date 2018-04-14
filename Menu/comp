@@ -1,0 +1,11 @@
+cd ../Controller
+make clean
+make ControllerOptions.o
+cp ControllerOptions.h ../shared
+
+cp ControllerOptions.o ../shared
+cd ../Menu
+make clean
+make
+./tester
+

@@ -1,0 +1,33 @@
+#!/bin/sh
+
+rm -f shared/*.o && \
+cd Misc && \
+make clean && \
+make && \
+cd ../Thread && \
+make clean && \
+make && \
+cd ../Video && \
+make clean && \
+make && \
+cd ../VideoStream &&\
+make clean &&\
+make &&\
+cd ../Tracker && \
+make clean && \
+make && \
+cd ../MeasureFinalSize && \
+make clean && \
+make && \
+cd ../PanTiltZoom && \
+make clean && \
+make && \
+cd ../SIKernel && \
+make clean && \
+make && \
+cd ../Menu && \
+make clean && \
+make && \
+cd .. && \
+echo Complete SI build successful, Mr. Nelson.
+

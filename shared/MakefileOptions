@@ -1,0 +1,12 @@
+XCC=g++ -g 
+GCC=gcc -g
+
+#XCC = /opt/intel/cc/9.0/bin/icc -d
+#GCC = /opt/intel/cc/9.0/bin/icc -d
+
+LINKFLAGS=-Wall -lm -lrt -O1 -lcurses -lcv -lcvaux -lcxcore -lhighgui -lstdc++ -pthread 
+INC=-I /usr/local/include/opencv -I /usr/src/linux/include -I ../shared
+                              
+          
+#WXFLGS=$(shell wx-config --cxxflags)
+#WXLIBS=$(shell wx-config --libs)
